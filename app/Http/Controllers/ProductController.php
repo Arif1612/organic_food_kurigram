@@ -132,7 +132,8 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('backend.products.edit', compact('product'));
+        $categories = Category::pluck('name', 'id')->toArray();
+        return view('backend.products.edit', compact('product','categories'));
     }
 
     /**
@@ -146,9 +147,11 @@ class ProductController extends Controller
     {
         $formData = [
             'name' => $request->name,
+            'category_id'=>$request->category_id,
             'description' => $request->description,
             'price' => $request->price,
             'is_active' => $request->is_active ? true : false,
+
         ];
         // aikhane jodi image ta thake thahole formdata ar modde image ta upload krbe
         if ($request->hasFile('image')) {

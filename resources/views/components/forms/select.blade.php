@@ -1,4 +1,4 @@
-@props(['name', 'type', 'label' => null, 'value' => '', 'options' => []])
+@props(['name', 'type', 'label' => null, 'value' => '', 'options' => [],'selected'=>null])
 
 <div class="mb-3">
     @if ($label)
@@ -9,7 +9,9 @@
 
         <option value="">Select One</option>
         @foreach ($options as $key => $value)
-            <option value="{{ $key }}">{{ $value }}</option>
+            <option value="{{ $key }}" @if ($selected == $key)selected
+
+            @endif >{{ $value }}</option>
         @endforeach
     </select>
 

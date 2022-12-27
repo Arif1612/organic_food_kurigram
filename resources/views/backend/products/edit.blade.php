@@ -23,6 +23,7 @@
         @csrf
         @method('patch')
         <div class="mb-3">
+            <x-forms.select  name="category_id" :selected="$product->category_id" required label="Select Category" :options="$categories" />
             <x-forms.input name="name" label="Products Name" type="text" :value="old('name', $product->name)"
                 placeholder="give your product name" />
 
